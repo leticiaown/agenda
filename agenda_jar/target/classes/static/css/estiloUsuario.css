@@ -1,0 +1,65 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+#team {
+    background: #eee !important;
+}
+
+#btnEditar:hover, #btnEditar:focus {
+    border-color: #228B22;
+    box-shadow: none;
+    outline: none;
+    background-color: #228B22;
+}
+
+#btnEditar{
+    color: #fff;
+    background-color: #3CB371;
+    border-color: #3CB371;
+}
+
+.btn-danger:hover, #btnExcluir:focus{
+    border-color: red;
+    box-shadow: none;
+    outline: none;
+}
+
+#btnExcluir{
+    color: #fff;
+    background-color: #B22222;
+    border-color: #B22222;
+}
+
+
+th{
+    background-color: #4682B4;
+    color:white;
+}
+
+
+body{
+    background-color: #87CEEB;
+}
+
+#btnAdicionar{
+    width: 10%;
+    height: 10%;
+    color: #fff;
+    background-color: #4682B4;
+    border-color: #4682B4;
+    padding: 10px 16px;
+    font-size: 15px;
+}
+
+h3{
+    text-align: center;
+}
+
+#txt_consulta{
+    font-size: 17px;
+}
+
+#btnAdicionar:hover, #btnAdicionar:focus{
+    border-color: #87CEFA;
+    box-shadow: none;
+    outline: none;
+    background-color: #87CEFA;
+}

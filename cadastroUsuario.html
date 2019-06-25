@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width"/>
+        <title>Usuários</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+        <link th:href="@{/css/extra.css}" href="/css/extra.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="/css/cadastroUsuario.css"/> 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"/>
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"> <!--cores e bg cinza claro-->
+            <div class="container"> <!--conteúdo alinhado-->
+                <a class="navbar-brand h1 mb-0" href="#">Agenda</a> <!--mb-0 para tirar a margem-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+                    <span class="navbar-toggler-icon"></span>
+                </button> 
+
+                <div class="collapse navbar-collapse" id="navbarSite">
+
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Usuário</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Endereço</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Meio Contato</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container" style="margin-top: 1em;">
+            <form th:object="${usuario}" th:action="@{/usuario/save}" method="POST">
+                <div class="form-group">
+                    <div class="card person-card text-center">
+                            <div class="card-body">
+                                <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+                                    <div th:each="detailedError : ${#fields.detailedErrors()}">
+                                        <span th:text="${detailedError.message}"></span>
+                                    </div>
+                                </div>
+                                
+                    <img id="img13" class="person-img" src="img/imagem13.png">
+                    <h2 id="mensagem" class="card-title">Quem é você?</h2>
+                                
+                        <div class="col-md-1 my-3">
+                            <input type="text" class="form-control input-sm" id="id" th:field="*{idUsuario}" readOnly="readonly" placeholder="ID"/>
+                        </div>
+                                
+                        <div class="form-group col-auto" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+                            <input id="nome" type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Informe o novo nome" maxlength="50" required="true"/>
+                        </div>
+                                
+                                
+                    </div>
+                </div>
+
+            <div class="row">
+                <div class="col-md-6" style="padding=0.5em;">
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <h2 class="card-title mx-3">Qual o seu login?</h2>
+                            <div class="form-group col-auto" th:classappend="${#fields.hasErrors('login')}? 'has-error'">
+                            <label>Login</label>
+                            <input id="usuario" type="text" class="form-control input-sm" th:field="*{login}" maxlength="20" placeholder="Informe o nome de usuário" maxlength="50" required="true"/>
+                        </div> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card my-3"> 
+                        <div class="card-body">
+                            <h2 class="card-title">Deixe sua conta mais segura!</h2>
+                            <div class="form-group" th:classappend="${#fields.hasErrors('senha')}? 'has-error'">
+                                <label>Senha</label>
+                                <input type="password" class="form-control input-sm" th:field="*{senha}" maxlength="10" placeholder="Informe a nova senha" required="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 1em;" class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block my-2" id="btnCancelar" th:href="@{/usuario}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+        <footer class="footer mt-auto py-3 bg-light fixed-bottom text-center">
+            <div class="container">
+                <span class="text-muted">&reg; copyright 2019 Letícia Braga Rodrigues</span>
+            </div>
+        </footer>
+    </body>
+</html>
